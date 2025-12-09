@@ -1,0 +1,155 @@
+---
+title: Changelog
+description: Track the evolution of Danielle Evans Documentation with details on releases and improvements.
+---
+
+## Overview
+
+Welcome to the changelog for Danielle Evans Documentation. You track all releases, new features, improvements, and bug fixes here. Each entry details changes that enhance your documentation experience, from better MDX support to improved navigation.
+
+<Callout kind="info">
+  Subscribe to our RSS feed or GitHub notifications to stay updated on new releases. Check the <code>tags</code> on each update to filter by type, such as `feature` or `bugfix`.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Quick Upgrade" icon="download" href="/docs/upgrading">
+    Follow our upgrade guide to apply the latest changes seamlessly.
+  </Card>
+  <Card title="Contribute Changes" icon="github" href="https://github.com/danielleevans/docs" target="_blank">
+    Found a bug? Submit pull requests with your fixes.
+  </Card>
+  <Card title="Release Schedule" icon="calendar" href="/docs/roadmap">
+    View our planned features and quarterly release cadence.
+  </Card>
+</Columns>
+
+<Update label="2024-10-15" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Introduced full MDX v3 support with advanced JSX components like `<Steps>` and `<Tabs>`.
+- Added brand color customization (`#3B82F6` default for Danielle Evans theme).
+
+## Improvements
+
+- Enhanced parsing rules prevent common errors like unescaped `{` or `<` characters.
+- Sidebar navigation now supports dynamic frontmatter titles.
+
+## Breaking Changes
+
+- Updated Mermaid syntax to code blocks only—no more `<Mermaid>` component.
+
+## Bug Fixes
+
+- Fixed YAML frontmatter parsing with strict no-blank-line enforcement.
+
+```javascript
+// Example: New component usage in v1.0.0
+<Steps>
+  <Step title="Install">npm install danielle-docs</Step>
+</Steps>
+```
+
+</Update>
+
+<Update label="2024-09-20" description="v0.9.0" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- Added `<Update>` component for changelog entries with `tags` support.
+- Integrated Lucide icons library for all visual elements.
+
+## Improvements
+
+- CodeGroup now auto-detects languages without manual `tabs` specification.
+- Performance boost: Lazy loading for expandable sections.
+
+## Bug Fixes
+
+- Resolved nested code block issues by enforcing 4-backtick syntax.
+- Corrected attribute quoting—always double quotes for strings.
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Upgraded auth example
+const auth = await fetch('/api/docs', {
+  headers: { Authorization: `Bearer ${token}` }
+});
+```
+
+```python
+# Upgraded auth example
+import requests
+response = requests.get('/api/docs', headers={'Authorization': f'Bearer {token}'})
+```
+</CodeGroup>
+
+</Update>
+
+<Update label="2024-08-10" description="v0.8.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Launched `<ParamField>` and `<ResponseField>` for API documentation.
+- Support for `<Columns>` layouts with up to 5 columns.
+
+## Bug Fixes
+
+- Fixed heading hierarchy enforcement—no more H1 in body content.
+- Escaped special characters in prose now render correctly.
+
+</Update>
+
+## Upcoming Features
+
+You can preview beta features by enabling them in your config. Expect `<Video>` embeds, advanced `<Tabs>` with icons, and AI-assisted MDX generation.
+
+<ExpandableGroup>
+  <Expandable title="Beta: AI MDX Writer" default-open="false">
+
+    Install the beta package:
+
+````jsx
+<Steps>
+  <Step title="Enable Beta">
+    Set `beta: true` in your `danielle-docs.config.js`.
+  </Step>
+  <Step title="Generate Page">
+    Run `npx danielle-docs generate --ai`.
+  </Step>
+</Steps>
+````
+
+  </Expandable>
+</ExpandableGroup>
+
+<Tabs>
+  <Tab title="Config Changes" icon="settings">
+
+    Update your config file:
+
+```javascript
+// danielle-docs.config.js (upcoming syntax)
+export default {
+  theme: {
+    colors: { brand: '#3B82F6' }
+  },
+  components: {
+    aiWriter: { enabled: true }
+  }
+};
+```
+
+  </Tab>
+  <Tab title="CLI Preview" icon="terminal">
+
+```bash
+npx danielle-docs@beta generate changelog.mdx --template=ai
+```
+
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Join our Discord for early access to v1.1.0 betas and provide feedback on upcoming changes.
+</Callout>

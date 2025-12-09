@@ -1,0 +1,152 @@
+---
+title: Customizing Your Documentation Space
+description: Learn how to personalize your documentation environment, including themes, branding, and layout adjustments.
+---
+
+## Overview
+
+Personalize your Danielle Evans Documentation space to match your brand and workflow. Adjust brand colors, select themes, configure page layouts, and set up integrations. Start with simple config changes to see immediate results.
+
+<Columns cols={3}>
+  <Card title="Brand Colors" icon="palette" href="#brand-colors">
+    Set primary colors like `#3B82F6` for your brand.
+  </Card>
+  <Card title="Themes" icon="moon" href="#themes">
+    Switch between light, dark, and custom themes.
+  </Card>
+  <Card title="Layouts" icon="layout" href="#layouts">
+    Customize sidebar, navigation, and content width.
+  </Card>
+</Columns>
+
+## Brand Colors and Themes
+
+Define your brand colors in the configuration file. Use the primary color `#3B82F6` for buttons, links, and accents.
+
+<Steps>
+  <Step title="Update Config" icon="edit-3">
+    Open your `config.json` file and add the brand color.
+
+    <CodeGroup tabs="JSON,YAML">
+    ```json
+    {
+      "theme": {
+        "brandColor": "#3B82F6",
+        "secondaryColor": "#1E40AF"
+      }
+    }
+    ```
+    ```yaml
+    theme:
+      brandColor: "#3B82F6"
+      secondaryColor: "#1E40AF"
+    ```
+    </CodeGroup>
+  </Step>
+  <Step title="Apply Changes" icon="refresh-cw">
+    Save the file and refresh your documentation site. Colors update automatically.
+  </Step>
+  <Step title="Test Theme" icon="eye">
+    Preview light and dark modes to ensure readability.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Test your `#3B82F6` color against white and dark backgrounds for optimal contrast.
+</Callout>
+
+<Tabs>
+  <Tab title="Light Theme" icon="sun">
+    Ideal for daytime use with high readability.
+
+    ```json
+    {
+      "theme": "light",
+      "brandColor": "#3B82F6"
+    }
+    ```
+  </Tab>
+  <Tab title="Dark Theme" icon="moon">
+    Reduces eye strain in low-light environments.
+
+    ```json
+    {
+      "theme": "dark",
+      "brandColor": "#60A5FA"
+    }
+    ```
+  </Tab>
+  <Tab title="Custom Theme" icon="settings">
+    Define full CSS variables for advanced control.
+
+    ```css
+    :root {
+      --brand-color: #3B82F6;
+      --bg-primary: #FFFFFF;
+      --text-primary: #111827;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Page Layouts
+
+Choose from predefined layouts or customize widths and positions.
+
+| Layout Type | Description | Best For |
+|-------------|-------------|----------|
+| Default | Standard sidebar + content | General docs |
+| Wide | Full-width content, minimal nav | Long-form guides |
+| Compact | Collapsed sidebar | Mobile-first |
+| Split | Dual-pane for API reference | Developers |
+
+<Expandable title="Advanced Layout Config" default-open="false">
+  Override defaults with custom CSS.
+
+  ```css
+  .docs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
+  ```
+</Expandable>
+
+## Integration Settings
+
+Connect external tools like analytics or search providers.
+
+<Steps>
+  <Step title="Add Analytics" icon="bar-chart-3">
+    Insert your tracking ID.
+
+    ```javascript
+    window.analyticsConfig = {
+      googleAnalytics: "G-XXXXXXXXXX",
+      plausible: "your-site.plausible.io"
+    };
+    ```
+  </Step>
+  <Step title="Enable Search" icon="search">
+    Configure Algolia or custom search.
+
+    ```json
+    {
+      "search": {
+        "provider": "algolia",
+        "appId": "your-app-id",
+        "apiKey": "your-search-key"
+      }
+    }
+    ```
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+  Secure your integration keys. Never commit production API keys to public repos.
+</Callout>
+
+Your documentation now reflects your brand with `#3B82F6` accents, custom themes, optimized layouts, and seamless integrations. Experiment with combinations to find the perfect setup.

@@ -1,0 +1,150 @@
+---
+title: Getting Started with Danielle Evans Documentation
+description: Quickly set up your documentation space and create your first project to begin organizing content efficiently.
+---
+
+## Overview
+
+Set up your Danielle Evans Documentation space in minutes. You create an account, complete initial setup, and launch your first project to organize technical docs, guides, and API references. This quickstart guides you through each step with clear instructions.
+
+<Columns cols={3}>
+  <Card title="Fast Setup" icon="zap" href="/docs/features/setup">
+    Complete onboarding in under 5 minutes.
+  </Card>
+  <Card title="Organize Content" icon="folder" href="/docs/projects">
+    Structure docs with projects and folders.
+  </Card>
+  <Card title="Collaborate" icon="users" href="/docs/teams">
+    Invite team members instantly.
+  </Card>
+</Columns>
+
+## Create Your Account
+
+Follow these steps to sign up and access your documentation workspace.
+
+<Steps>
+  <Step title="Visit the Site" icon="globe">
+    Navigate to the Danielle Evans Documentation homepage and click **Sign Up**.
+
+    <Callout kind="tip">
+      Use your work email for seamless team integration.
+    </Callout>
+  </Step>
+
+  <Step title="Enter Details" icon="user">
+    Provide your email, create a strong password, and verify your account via the confirmation link sent to your inbox.
+  </Step>
+
+  <Step title="Complete Profile" icon="check-circle">
+    Add your name, organization, and preferred workspace name. You land on your dashboard ready to build.
+  </Step>
+</Steps>
+
+## Initial Setup
+
+Configure your space for optimal use. Choose your preferred method below.
+
+<Tabs>
+  <Tab title="Web Dashboard" icon="monitor">
+    From the dashboard, select **Preferences** > **Integrations**.
+
+    Enable GitHub sync and set your default theme.
+
+    ```javascript
+    // Example: Save workspace config
+    const config = {
+      theme: 'light',
+      integrations: ['github', 'slack']
+    };
+    localStorage.setItem('de-docs-config', JSON.stringify(config));
+    ```
+  </Tab>
+
+  <Tab title="CLI Tool" icon="terminal">
+    Install the CLI for local editing and previews.
+
+    <CodeGroup tabs="npm,yarn">
+      ```bash
+      npm install -g @danielleevans/docs-cli
+      ```
+      ```bash
+      yarn global add @danielleevans/docs-cli
+      ```
+    </CodeGroup>
+
+    Authenticate with:
+
+    ```bash
+    de-docs login --email your@email.com
+    ```
+  </Tab>
+</Tabs>
+
+## Create Your First Project
+
+Build a project to group your documentation.
+
+<Steps>
+  <Step title="New Project" icon="plus">
+    Click **New Project** on the dashboard. Enter name `API Reference` and description `Centralized API docs`.
+  </Step>
+
+  <Step title="Add Content" icon="file-text">
+    Create pages: **Overview**, **Endpoints**, **Authentication**.
+
+    Use the editor to add markdown, or import from GitHub repo.
+  </Step>
+
+  <Step title="Publish" icon="eye">
+    Hit **Publish** to generate a live site. Share the URL with your team.
+
+    <Callout kind="success">
+      Your project is now live at `https://docs.danielleevans.com/your-workspace/api-reference`.
+    </Callout>
+  </Step>
+</Steps>
+
+<Expandable title="Advanced: API Project Creation" default-open="false">
+  Automate project setup via API.
+
+  <Request tabs="cURL,JavaScript">
+    ```bash
+    curl -X POST https://api.danielleevans.com/v1/projects \
+      -H "Authorization: Bearer {YOUR_API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "name": "API Reference",
+        "description": "Centralized API docs"
+      }'
+    ```
+
+    ```javascript
+    const response = await fetch('https://api.danielleevans.com/v1/projects', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${YOUR_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'API Reference',
+        description: 'Centralized API docs'
+      })
+    });
+    ```
+  </Request>
+
+  <Response show-lines="false">
+    ```json
+    {
+      "id": "proj_abc123",
+      "name": "API Reference",
+      "url": "https://docs.danielleevans.com/your-workspace/api-reference"
+    }
+    ```
+  </Response>
+</Expandable>
+
+## Next Steps
+
+Explore features like version control, search, and analytics. Your documentation scales as your project grows. Start building today!
